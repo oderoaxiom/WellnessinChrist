@@ -66,6 +66,9 @@
     <!-- 3D / 4D Heavenly Canvas Background -->
     <canvas id="heavenly-canvas"></canvas>
 
+    <!-- Hidden HTML5 Audio Element for Your Recording (.mp3) -->
+    <audio id="fellowship-audio" src="devotion-audio.mp3" preload="auto"></audio>
+
     <!-- Top Live Audio Player Bar -->
     <div class="content-layer bg-sky-950 text-white py-2 px-4 text-xs border-b border-sky-900 flex flex-col sm:flex-row justify-between items-center gap-2 z-50">
         <div class="flex items-center space-x-3">
@@ -83,12 +86,11 @@
         </div>
     </div>
 
-    <!-- Navigation Bar with Enhanced Serious/Colorful Logo Wrapper -->
+    <!-- Navigation Bar -->
     <header class="content-layer sticky top-0 bg-white/90 backdrop-blur-md border-b border-sky-100 shadow-sm z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('home')">
-                    <!-- Enhanced Colorful & Serious Logo Border -->
                     <div class="relative group p-0.5 rounded-full bg-gradient-to-tr from-amber-500 via-sky-600 to-amber-300 shadow-md flex-shrink-0">
                         <img src="logo.png" alt="Wellness in Christ Logo" class="w-12 h-12 rounded-full object-cover bg-sky-950 block" id="brand-logo-img">
                     </div>
@@ -98,15 +100,16 @@
                     </div>
                 </div>
                 <!-- Desktop Menu -->
-                <nav class="hidden md:flex space-x-8 font-medium text-sm text-gray-700">
+                <nav class="hidden lg:flex space-x-6 font-medium text-sm text-gray-700">
                     <button onclick="switchTab('home')" id="nav-home" class="nav-btn transition-colors hover:text-sky-600 text-sky-600 font-semibold pb-1 border-b-2 border-sky-600">Home</button>
                     <button onclick="switchTab('teachings')" id="nav-teachings" class="nav-btn transition-colors hover:text-sky-600 pb-1 border-b-2 border-transparent">Key Teachings</button>
                     <button onclick="switchTab('devotions')" id="nav-devotions" class="nav-btn transition-colors hover:text-sky-600 pb-1 border-b-2 border-transparent">Daily Devotions</button>
+                    <button onclick="switchTab('prophecies')" id="nav-prophecies" class="nav-btn transition-colors hover:text-sky-600 pb-1 border-b-2 border-transparent">Prophecies & Signs</button>
                     <button onclick="switchTab('team')" id="nav-team" class="nav-btn transition-colors hover:text-sky-600 pb-1 border-b-2 border-transparent">The Team</button>
                     <button onclick="switchTab('contact')" id="nav-contact" class="nav-btn transition-colors hover:text-sky-600 pb-1 border-b-2 border-transparent">Contact & Support</button>
                 </nav>
                 <!-- Mobile Menu Button -->
-                <div class="md:hidden flex items-center">
+                <div class="lg:hidden flex items-center">
                     <button id="mobile-menu-btn" class="text-gray-700 focus:outline-none p-2">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                     </button>
@@ -114,10 +117,11 @@
             </div>
         </div>
         <!-- Mobile Dropdown Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 px-4 pt-2 pb-4 space-y-2">
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-gray-100 px-4 pt-2 pb-4 space-y-2">
             <button onclick="switchTab('home'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded text-sky-600 font-medium bg-sky-50">Home</button>
             <button onclick="switchTab('teachings'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded text-gray-700 hover:bg-gray-50">Key Teachings</button>
             <button onclick="switchTab('devotions'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded text-gray-700 hover:bg-gray-50">Daily Devotions</button>
+            <button onclick="switchTab('prophecies'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded text-gray-700 hover:bg-gray-50">Prophecies & Signs</button>
             <button onclick="switchTab('team'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded text-gray-700 hover:bg-gray-50">The Team</button>
             <button onclick="switchTab('contact'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded text-gray-700 hover:bg-gray-50">Contact & Support</button>
         </div>
@@ -128,11 +132,8 @@
 
         <!-- 1. HOME TAB -->
         <div id="tab-home" class="tab-content active">
-            <!-- Hero Section -->
             <section class="relative py-20 lg:py-28 overflow-hidden">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    
-                    <!-- Hero Logo Image Card Display with Enhanced Celestial Gold/Navy Border -->
                     <div class="relative w-36 h-36 sm:w-44 sm:h-44 mx-auto mb-6 p-1 rounded-3xl bg-gradient-to-br from-amber-500 via-sky-900 to-amber-600 shadow-2xl">
                         <div class="w-full h-full rounded-[22px] overflow-hidden bg-sky-950 flex items-center justify-center">
                             <img src="logo.png" alt="Wellness in Christ Fellowship Logo" class="w-full h-full object-cover">
@@ -153,8 +154,8 @@
                         <button onclick="switchTab('teachings')" class="px-8 py-4 rounded-xl bg-sky-900 text-white font-medium shadow-lg hover:bg-sky-800 transition transform hover:-translate-y-0.5">
                             Explore Key Teachings
                         </button>
-                        <button onclick="switchTab('devotions')" class="px-8 py-4 rounded-xl bg-white text-sky-900 border border-sky-200 font-medium shadow-sm hover:bg-sky-50 transition transform hover:-translate-y-0.5">
-                            Read Daily Devotions
+                        <button onclick="switchTab('prophecies')" class="px-8 py-4 rounded-xl bg-amber-500 text-sky-950 font-bold shadow-lg hover:bg-amber-400 transition transform hover:-translate-y-0.5">
+                            View Recent Prophecies
                         </button>
                     </div>
 
@@ -318,7 +319,87 @@
             </section>
         </div>
 
-        <!-- 4. THE TEAM TAB -->
+        <!-- 4. PROPHECIES & SIGNS OF RECENT TIMES TAB -->
+        <div id="tab-prophecies" class="tab-content">
+            <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <span class="text-amber-600 text-xs font-semibold uppercase tracking-widest">Eschatology & Scriptural Fulfillment</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold divine-title font-cinzel mt-2">Prophecies Happening Recently</h2>
+                    <p class="text-gray-600 mt-2 max-w-2xl mx-auto">Examining current global shifts, geopolitical alignments, and spiritual awakenings in light of biblical prophecy.</p>
+                </div>
+
+                <!-- Featured Prophetic Insight Banner -->
+                <div class="bg-gradient-to-r from-sky-950 via-sky-900 to-slate-900 text-white rounded-3xl p-8 sm:p-10 shadow-xl border border-amber-400/30 mb-12 relative overflow-hidden">
+                    <div class="absolute right-0 top-0 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                    <span class="inline-block text-xs font-bold text-amber-400 uppercase tracking-widest mb-2">Watch and Pray (Matthew 24:42)</span>
+                    <h3 class="text-2xl sm:text-3xl font-cinzel font-bold text-white mb-4">Reading the Signs of the Times</h3>
+                    <p class="text-sky-200 text-sm sm:text-base leading-relaxed mb-6 max-w-3xl">
+                        Just as Jesus rebuked the Pharisees for failing to discern the face of the sky while ignoring the signs of their era, believers today are called to observe how modern geopolitical events, societal shifts, and the global proliferation of the Gospel converge with ancient biblical blueprints.
+                    </p>
+                    <div class="flex flex-wrap gap-4 text-xs font-semibold">
+                        <span class="bg-sky-900/80 text-sky-200 px-3 py-1.5 rounded-lg border border-sky-700">Israel & Middle East Tensions</span>
+                        <span class="bg-sky-900/80 text-sky-200 px-3 py-1.5 rounded-lg border border-sky-700">Proliferation of Truth & Harvest</span>
+                        <span class="bg-sky-900/80 text-sky-200 px-3 py-1.5 rounded-lg border border-sky-700">Global Awakening in Sound Doctrine</span>
+                    </div>
+                </div>
+
+                <!-- Prophetic Watch Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Prophecy Card 1 -->
+                    <div class="glass-card rounded-2xl p-8 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-xs font-bold text-amber-700 bg-amber-50 px-3 py-1 rounded-full">Middle East Focus</span>
+                                <span class="text-xs text-gray-400">Zechariah 12:3</span>
+                            </div>
+                            <h3 class="font-cinzel text-xl font-bold divine-title mb-3">Jerusalem as a Burdensome Stone</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                                Scripture foretold that Jerusalem would become a burdensome stone for all nations. Recent escalating tensions and global diplomatic friction centered on the Middle East continue to place the ancient city at the focal point of world attention.
+                            </p>
+                        </div>
+                        <div class="border-t border-gray-100 pt-4 text-xs text-sky-900 font-semibold">
+                            Status: Actively Unfolding
+                        </div>
+                    </div>
+
+                    <!-- Prophecy Card 2 -->
+                    <div class="glass-card rounded-2xl p-8 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-xs font-bold text-amber-700 bg-amber-50 px-3 py-1 rounded-full">Global Harvest</span>
+                                <span class="text-xs text-gray-400">Joel 2:28 / John 4:35</span>
+                            </div>
+                            <h3 class="font-cinzel text-xl font-bold divine-title mb-3">The Proliferation of the Church</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                                Despite cultural challenges, God is strengthening the hands of believers worldwide for a massive spiritual harvest. Hubs of absolute truth, online fellowships, and deep scriptural studies are witnessing unprecedented digital and physical reach.
+                            </p>
+                        </div>
+                        <div class="border-t border-gray-100 pt-4 text-xs text-sky-900 font-semibold">
+                            Status: Multiplying Globally
+                        </div>
+                    </div>
+
+                    <!-- Prophecy Card 3 -->
+                    <div class="glass-card rounded-2xl p-8 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-xs font-bold text-amber-700 bg-amber-50 px-3 py-1 rounded-full">Spiritual Resilience</span>
+                                <span class="text-xs text-gray-400">2 Timothy 4:3-4</span>
+                            </div>
+                            <h3 class="font-cinzel text-xl font-bold divine-title mb-3">The Return to Precept Upon Precept</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                                Prophesied times see many turning away from sound doctrine toward emotionalism. In response, the Holy Spirit is raising up communities like Wellness in Christ Fellowship to anchor believers firmly line upon line in absolute biblical truth.
+                            </p>
+                        </div>
+                        <div class="border-t border-gray-100 pt-4 text-xs text-sky-900 font-semibold">
+                            Status: Essential for Today's Believer
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- 5. THE TEAM TAB -->
         <div id="tab-team" class="tab-content">
             <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
@@ -333,14 +414,14 @@
                         <h3 class="font-cinzel text-2xl font-bold divine-title">Administration</h3>
                         <p class="text-xs text-amber-700 font-semibold uppercase tracking-wider mt-1">Fellowship Head & Executives</p>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         
-                        <!-- John Odero -->
+                        <!-- John Odero (Updated with uploaded photo: john-otieno-odero.png) -->
                         <div class="glass-card rounded-3xl p-8 shadow-md flex flex-col justify-between text-center relative overflow-hidden">
-                            <div class="absolute top-0 right-0 bg-amber-500 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl uppercase tracking-widest">Ministry Leader</div>
+                            <div class="absolute top-0 right-0 bg-amber-500 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl uppercase tracking-widest z-10">Ministry Leader</div>
                             <div>
-                                <div class="w-24 h-24 rounded-full bg-gradient-to-tr from-sky-600 to-amber-400 text-white font-cinzel font-bold text-2xl flex items-center justify-center mx-auto mb-6 shadow-md">
-                                    JO
+                                <div class="w-24 h-24 rounded-full p-0.5 bg-gradient-to-tr from-sky-600 to-amber-400 mx-auto mb-6 shadow-md overflow-hidden flex items-center justify-center bg-sky-950">
+                                    <img src="john-otieno-odero.png" alt="John Odero" class="w-full h-full object-cover rounded-full">
                                 </div>
                                 <span class="inline-block text-xs font-bold text-amber-600 bg-amber-50 px-3 py-1 rounded-full uppercase tracking-wider mb-2">Fellowship Leader</span>
                                 <h4 class="text-2xl font-cinzel font-bold divine-title mb-4">John Odero</h4>
@@ -389,6 +470,24 @@
                             </div>
                         </div>
 
+                        <!-- Mary Musyoki -->
+                        <div class="glass-card rounded-3xl p-8 shadow-md flex flex-col justify-between text-center relative overflow-hidden">
+                            <div class="absolute top-0 right-0 bg-amber-500 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl uppercase tracking-widest">Daily Devotion</div>
+                            <div>
+                                <div class="w-24 h-24 rounded-full bg-amber-100 text-amber-800 font-cinzel font-bold text-2xl flex items-center justify-center mx-auto mb-6 shadow-md">
+                                    MM
+                                </div>
+                                <span class="inline-block text-xs font-bold text-amber-600 bg-amber-50 px-3 py-1 rounded-full uppercase tracking-wider mb-2">Lead, Community Shepherds</span>
+                                <h4 class="text-2xl font-cinzel font-bold divine-title mb-4">Mary Musyoki</h4>
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    Leading the community shepherds, guiding fellowship members in sound scriptural truths and spiritual care.
+                                </p>
+                            </div>
+                            <div class="mt-8 pt-4 border-t border-gray-100 text-[11px] text-sky-900 font-semibold">
+                                Shepherding Leadership
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
@@ -396,37 +495,36 @@
                 <div class="mb-16">
                     <div class="border-b border-sky-200 pb-3 mb-8">
                         <h3 class="font-cinzel text-2xl font-bold divine-title">Community Shepherds</h3>
+                        <p class="text-xs text-amber-700 font-semibold uppercase tracking-wider mt-1">Leadership & Daily WhatsApp Fellowship</p>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <div class="glass-card rounded-2xl p-6 shadow-sm text-center flex flex-col justify-between">
-                            <div>
-                                <div class="w-16 h-16 rounded-full bg-sky-100 text-sky-800 font-cinzel font-bold text-lg flex items-center justify-center mx-auto mb-3">MM</div>
-                                <h4 class="font-cinzel font-bold divine-title text-base">Minister Mary Mbithe</h4>
-                                <span class="inline-block text-[11px] font-semibold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-full mt-2">Fellowship Leader</span>
-                            </div>
-                            <p class="text-gray-600 text-xs mt-3">Teaching the Word and supporting fellowship growth.</p>
-                        </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        
+                        <!-- Minister Nyaranga -->
                         <div class="glass-card rounded-2xl p-6 shadow-sm text-center flex flex-col justify-between">
                             <div>
                                 <div class="w-16 h-16 rounded-full bg-amber-100 text-amber-800 font-cinzel font-bold text-lg flex items-center justify-center mx-auto mb-3">EN</div>
                                 <h4 class="font-cinzel font-bold divine-title text-base">Minister Nyaranga</h4>
-                                <span class="inline-block text-[11px] font-semibold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-full mt-2">Fellowship Leader</span>
+                                <span class="inline-block text-[11px] font-semibold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-full mt-2">Community Shepherd</span>
                             </div>
                             <p class="text-gray-600 text-xs mt-3">Ministering sound doctrine and edifying believers.</p>
                         </div>
+
+                        <!-- Minister Sharon Mboya -->
                         <div class="glass-card rounded-2xl p-6 shadow-sm text-center flex flex-col justify-between">
                             <div>
                                 <div class="w-16 h-16 rounded-full bg-sky-100 text-sky-800 font-cinzel font-bold text-lg flex items-center justify-center mx-auto mb-3">SM</div>
                                 <h4 class="font-cinzel font-bold divine-title text-base">Minister Sharon Mboya</h4>
-                                <span class="inline-block text-[11px] font-semibold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-full mt-2">Fellowship Leader</span>
+                                <span class="inline-block text-[11px] font-semibold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-full mt-2">Community Shepherd</span>
                             </div>
                             <p class="text-gray-600 text-xs mt-3">Committed to fellowship community building and prayer.</p>
                         </div>
+
+                        <!-- Minister Keziah Kamau -->
                         <div class="glass-card rounded-2xl p-6 shadow-sm text-center flex flex-col justify-between">
                             <div>
                                 <div class="w-16 h-16 rounded-full bg-amber-100 text-amber-800 font-cinzel font-bold text-lg flex items-center justify-center mx-auto mb-3">KK</div>
                                 <h4 class="font-cinzel font-bold divine-title text-base">Minister Keziah Kamau</h4>
-                                <span class="inline-block text-[11px] font-semibold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-full mt-2">Fellowship Leader</span>
+                                <span class="inline-block text-[11px] font-semibold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-full mt-2">Community Shepherd</span>
                             </div>
                             <p class="text-gray-600 text-xs mt-3">Fostering spiritual wellness and fellowship development.</p>
                         </div>
@@ -485,7 +583,7 @@
             </section>
         </div>
 
-        <!-- 5. CONTACT & SUPPORT TAB -->
+        <!-- 6. CONTACT & SUPPORT TAB -->
         <div id="tab-contact" class="tab-content">
             <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
@@ -581,19 +679,36 @@
             mobileMenu.classList.add('hidden');
         }
 
+        // Real Audio Player Control for devotion-audio.mp3
         let isPlaying = false;
+        const audioPlayer = document.getElementById('fellowship-audio');
+
         function toggleAudioPlayer() {
-            isPlaying = !isPlaying;
             const btn = document.getElementById('audio-play-btn');
             const status = document.getElementById('audio-status');
-            if (isPlaying) {
-                btn.innerHTML = '❚❚ Pause Audio';
-                status.innerText = 'Playing stream...';
+
+            if (!isPlaying) {
+                audioPlayer.play().then(() => {
+                    isPlaying = true;
+                    btn.innerHTML = '❚❚ Pause Audio';
+                    status.innerText = 'Playing stream...';
+                }).catch(error => {
+                    console.error("Audio playback failed:", error);
+                    status.innerText = 'Audio file not found (add devotion-audio.mp3)';
+                });
             } else {
+                audioPlayer.pause();
+                isPlaying = false;
                 btn.innerHTML = '▶ Play Audio Devotion';
                 status.innerText = 'Paused';
             }
         }
+
+        audioPlayer.addEventListener('ended', () => {
+            isPlaying = false;
+            document.getElementById('audio-play-btn').innerHTML = '▶ Play Audio Devotion';
+            document.getElementById('audio-status').innerText = 'Finished';
+        });
 
         const devotionsDatabase = {
             "2026-08-21": {
@@ -648,7 +763,7 @@
         const canvas = document.getElementById('heavenly-canvas');
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: transparent=true });
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(window.devicePixelRatio);
 
